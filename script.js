@@ -1,19 +1,19 @@
 //your code here
 
-function majortyNumber(arr,n) {
-	let count = 0;
-	for(let i of arr){
+function findMajorityElement(nums) {
+    let majorityElement = nums[0];
+    let count = 1;
 
-		if(i == i+1){
-			count++;
-		}
+    for (let i = 1; i < nums.length; i++) {
+        if (count === 0) {
+            majorityElement = nums[i];
+            count = 1;
+        } else if (nums[i] === majorityElement) {
+            count++;
+        } else {
+            count--;
+        }
+    }
 
-
-		if(count>Math.floor(n/2)){
-			return i;
-		}
-		
-		
-	}
-	return 0;
+    return majorityElement;
 }
