@@ -1,21 +1,16 @@
 function findMajorityElement(nums) {
-    let map = new Map();
+ let candidate = null;
+    let count = 0;
 
-   
-    for (let i = 0; i < nums.length; i++) {
-        map.set(nums[i], (map.get(nums[i]) || 0) + 1);
-    }
-
-    let majorityCount = Math.floor(nums.length / 2);
-
-
-    for (let [key, value] of map.entries()) {
-        if (value > majorityCount) {
-            return key;
+    // Step 1: Find the candidate
+    for (let num of nums) {
+        if (count === 0) {
+            candidate = num;
         }
+        count += (num === candidate) ? 1 : -1;
     }
 
-    return -1; 
+    return candidate;
 }
 
 
