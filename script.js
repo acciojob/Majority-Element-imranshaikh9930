@@ -7,18 +7,18 @@ function findMajorityElement(nums) {
 	for(let i = 0 ; i< nums.length;i++){
 
 		if(map.has(nums[i])){
-			hm.set(nums[i],hm.get(nums[i],0)+1);
+			map.set(nums[i],map.get(nums[i],0)+1);
 		}
 		else{
-			hm.set(nums[i],1);
+			map.set(nums[i],1);
 		}
 
 		
 	}
+ let majorityCount = Math.floor(nums.length / 2);
+	for(let [key,value] of map.entries()){
 
-	for(let [key,value] in map){
-
-		if(value > 1){
+		if(value > majorityCount){
 				return key;			
 		}
 	}
